@@ -1,0 +1,36 @@
+{
+  "name": "gulp-sassport",
+  "version": "0.0.1",
+  "description": "Sassport gulp plugin",
+  "main": "dist/index.js",
+  "dependencies": {
+    "gulp-sass": "^2.0.4",
+    "sassport": "^0.1.4"
+  },
+  "devDependencies": {
+    "gulp-util": "^3.0.6"
+  },
+  "scripts": {
+    "start": "babel -w ./src -d ./dist",
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidkpiano/gulp-sassport.git"
+  },
+  "keywords": [
+    "sassport",
+    "sass",
+    "gulp",
+    "gulp-sass",
+    "scss",
+    "node-sass",
+    "libsass"
+  ],
+  "author": "David Khourshid <davidkpiano@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davidkpiano/gulp-sassport/issues"
+  },
+  "homepage": "https://github.com/davidkpiano/gulp-sassport#readme"
+}
