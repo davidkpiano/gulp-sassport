@@ -8,6 +8,7 @@ Gulp plugin for the [Sassport](https://github.com/davidkpiano/sassport) tool. Ve
 ## Usage
 
 ```js
+var gulp = require('gulp');
 var sassport = require('gulp-sassport');
 var fooModule = require('path/to/some-sassport-module.js');
 
