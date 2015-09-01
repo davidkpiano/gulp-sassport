@@ -1,5 +1,9 @@
 'use strict';
 
+Object.defineProperty(exports, '__esModule', {
+  value: true
+});
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { 'default': obj }; }
 
 var _gulpUtil = require('gulp-util');
@@ -25,6 +29,7 @@ var _path2 = _interopRequireDefault(_path);
 var gulpSassport = function gulpSassport() {
   var modules = arguments[0] === undefined ? [] : arguments[0];
   var options = arguments[1] === undefined ? {} : arguments[1];
+  var sync = arguments[2] === undefined ? false : arguments[2];
 
   return _through22['default'].obj(function (file, enc, callback) {
     if (file.isNull() || !file.contents.length) {
@@ -42,10 +47,12 @@ var gulpSassport = function gulpSassport() {
     options.data = file.contents.toString();
 
     // Ensure `indentedSyntax` is true if a `.sass` file
-    options.indentedSyntax = _path2['default'].extName(file.path) === '.sass';
+    options.indentedSyntax = _path2['default'].extname(file.path) === '.sass';
 
     // Ensure file's parent directory in the include path
-    options.includePaths = Array.prototype.concat.call([], options.includePaths || []).unshift(_path2['default'].dirname(file.path));
+    options.includePaths = Array.prototype.concat.call([], options.includePaths || []);
+
+    options.includePaths.unshift(_path2['default'].dirname(file.path));
 
     // Generate Source Maps if plugin source-map present
     if (file.sourceMap) {
@@ -53,32 +60,35 @@ var gulpSassport = function gulpSassport() {
       options.omitSourceMapUrl = true;
     }
 
+    console.log(options);
+
     if (sync !== true) {
       // Async Sass render
-      wrappedCallback = function (error, obj) {
+      var wrappedCallback = function wrappedCallback(error, obj) {
         if (error) {
-          return errorM(error);
+          return errorMessage(file, error, callback);
         }
 
-        filePush(obj, callback);
+        filePush(file, obj, callback);
       };
 
-      gulpSass.compiler.render(options, wrappedCallback);
+      _sassport2['default'](modules).render(options, wrappedCallback);
     } else {
       // Sync Sass render
       try {
-        result = gulpSass.compiler.renderSync(options);
+        console.log(options);
+        result = _sassport2['default'](modules).renderSync(options);
 
-        filePush(result, callback);
+        filePush(file, result, callback);
       } catch (error) {
-        return errorM(error);
+        return errorMessage(file, error, callback);
       }
     }
   });
 };
 
 // Handles returning the file to the stream
-var filePush = function filePush(sassObj, callback) {
+var filePush = function filePush(file, sassObj, callback) {
   var sassMap;
   var sassMapFile;
   var sassFileSrc;
@@ -106,7 +116,7 @@ var filePush = function filePush(sassObj, callback) {
 };
 
 // Handles error message
-var errorM = function errorM(error) {
+var errorMessage = function errorMessage(file, error, callback) {
   var relativePath = '';
   var filePath = error.file === 'stdin' ? file.path : error.file;
   var message = '';
@@ -121,9 +131,12 @@ var errorM = function errorM(error) {
   error.messageFormatted = message;
   error.message = _gulpUtil2['default'].colors.stripColor(message);
 
-  return cb(new _gulpUtil2['default'].PluginError('Sassport', error));
+  return callback(gulpError(error));
 };
 
 var gulpError = function gulpError(message, data) {
   return new _gulpUtil2['default'].PluginError('Sassport', message);
 };
+
+exports['default'] = gulpSassport;
+module.exports = exports['default'];

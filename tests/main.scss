@@ -1,0 +1,8 @@
+
+
+.foo {
+  bar: 2+2;
+  $baz: green;
+  color: $baz;
+  test: test('Hello,');
+}

@@ -8,7 +8,11 @@
     "sassport": "^0.1.4"
   },
   "devDependencies": {
-    "gulp-util": "^3.0.6"
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.6",
+    "path": "^0.11.14",
+    "through2": "^2.0.0",
+    "vinyl-sourcemaps-apply": "^0.1.4"
   },
   "scripts": {
     "start": "babel -w ./src -d ./dist",
