@@ -5,9 +5,7 @@
   "main": "dist/index.js",
   "dependencies": {
     "gulp-sass": "^2.0.4",
-    "sassport": "^0.1.4"
-  },
-  "devDependencies": {
+    "sassport": "^0.1.4",
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.6",
     "path": "^0.11.14",

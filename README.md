@@ -1,6 +1,6 @@
 # gulp-sassport
 
-Gulp plugin for the [Sassport](https://github.com/davidkpiano/sassport) tool.
+Gulp plugin for the [Sassport](https://github.com/davidkpiano/sassport) tool. Very much based on [gulp-sass](https://github.com/dlmanning/gulp-sass/).
 
 ## Installation
 `npm install gulp-sassport --save-dev`
@@ -8,6 +8,7 @@ Gulp plugin for the [Sassport](https://github.com/davidkpiano/sassport) tool.
 ## Usage
 
 ```js
+var gulp = require('gulp');
 var sassport = require('gulp-sassport');
 var fooModule = require('path/to/some-sassport-module.js');
 
