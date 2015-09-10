@@ -1,6 +1,6 @@
 {
   "name": "gulp-sassport",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Sassport gulp plugin",
   "main": "dist/index.js",
   "dependencies": {
