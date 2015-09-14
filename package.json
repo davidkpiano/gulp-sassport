@@ -4,11 +4,11 @@
   "description": "Sassport gulp plugin",
   "main": "dist/index.js",
   "dependencies": {
-    "gulp-sass": "^2.0.4",
-    "sassport": "^0.1.4",
     "gulp": "^3.9.0",
+    "gulp-sass": "^2.0.4",
     "gulp-util": "^3.0.6",
     "path": "^0.11.14",
+    "sassport": "^0.1.5",
     "through2": "^2.0.0",
     "vinyl-sourcemaps-apply": "^0.1.4"
   },
