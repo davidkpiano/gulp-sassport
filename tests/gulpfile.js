@@ -11,6 +11,8 @@ var fooModule = sassport.module('foo')
 
 gulp.task('default', function() {
   gulp.src('./main.scss')
-    .pipe(gulpSassport([fooModule], {outputStyle: 'compressed'}))
+    .pipe(gulpSassport([fooModule], {outputStyle: 'compressed'})
+      .assets('assets', 'http://remote.foo'))
+      .functions({'foo($bar)': sassport.wrap(function(bar) { return bar + 'px' })})
     .pipe(gulp.dest('./css'));
 });
