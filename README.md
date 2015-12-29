@@ -1,6 +1,6 @@
-# gulp-sassport
+# Gulp-Sassport
 
-Gulp plugin for the [Sassport](https://github.com/davidkpiano/sassport) tool. It is a light wrapper for [gulp-sass](https://github.com/dlmanning/gulp-sass/).
+Gulp plugin for the [Sassport](https://github.com/davidkpiano/sassport) tool. Gulp-Sassport is a light wrapper for [gulp-sass](https://github.com/dlmanning/gulp-sass/), so its usage is very similar to Gulp-Sass.
 
 ## Installation
 `npm install gulp-sassport --save-dev`
@@ -40,7 +40,7 @@ gulp.task('sass', function() {
     .pipe(sassport(
       [ require('sassport-reference') ], // Sassport modules
       { outputStyle: 'compressed' }      // Sass options
-    )
+    ))
     .pipe(gulp.dest('./css'));
 });
 ```
