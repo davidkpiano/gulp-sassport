@@ -54,4 +54,15 @@ Gulp-Sassport is fully extensible, as if it were a Sassport module, with these m
 - `sassport(...).exports(exportMap)`
 - `sassport(...).variables(variableMap)`
 
+**EXAMPLE:**
+```js
+gulp.task('sass', function() {
+  return gulp.src('./sass/**/*.scss')
+    .pipe(sassport([], { outputStyle: 'compressed' })
+      .assets(__dirname + '/assets', 'public/assets')
+    )
+    .pipe(gulp.dest('./css'));
+});
+```
+
 See the [Sassport documentation](https://github.com/davidkpiano/sassport) for more info.
