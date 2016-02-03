@@ -1,4 +1,6 @@
-
+@import 'included-file';
+@import 'scss'; // test index file
+@import 'scss/deep'; // deep index file
 
 .foo {
   bar: 2+2;

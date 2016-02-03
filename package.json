@@ -6,7 +6,7 @@
   "dependencies": {
     "gulp": "^3.9.0",
     "gulp-sass": "^2.1.1",
-    "sassport": "^0.7.1"
+    "sassport": "^0.8.0"
   },
   "scripts": {
     "start": "babel -w ./src -d ./dist",
